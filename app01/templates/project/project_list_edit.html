@@ -1,0 +1,59 @@
+{% extends 'project/project_base.html' %}
+
+{% block project_base %}
+<div class="container">
+        <div class="container" style="margin-bottom: 10px">
+            <div style="...">
+                <a class="btn btn-success" href="/user/add/">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    项目列表编辑-(不能点击)
+                </a>
+                <a class="btn btn-success" href="/devops/project/list/add/">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    添加新项目
+                </a>
+                <a class="btn btn-success" href="/user/model/form/add/">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    多项删除(未做)
+                </a>
+            </div>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table"
+             style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+            <div class="panel panel-default"
+                 style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                <!-- Default panel contents -->
+                <div class="panel-heading"
+                     style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                    用户列表
+                </div>
+
+                <!-- Table -->
+                <table class="table" style="border-color: rgba(0, 0, 0, 0.35);">
+                    <thead style="border-color: rgba(0, 0, 0, 0.35);">
+                    <tr style="border-color: rgba(0, 0, 0, 0.35);">
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">ID</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">项目名</th>
+                    </tr>
+                    </thead>
+                    <tbody style="border-color: rgba(0, 0, 0, 0.35);">
+                    {% csrf_token %}
+                    {% for obj in form %}
+                        <tr style="border-color: rgba(0, 0, 0, 0.35);">
+                            <th scope="row" style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.id }}</th>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.project_name }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">
+{#                                <a class="btn btn-primary" href="/user/{{ obj.id }}/edit/">编辑</a>#}
+                                <a class="btn btn-danger" href="/devops/project/list/{{ obj.id }}/delete/">删除</a>
+                            </td>
+                        </tr>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

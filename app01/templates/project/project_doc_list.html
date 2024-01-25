@@ -1,0 +1,69 @@
+{% extends 'project/project_base.html' %}
+
+{% block project_base %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <div class="container">
+        <div class="container" style="margin-bottom: 10px">
+            <div style="...">
+                <a class="btn btn-success" href="#">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    当前项目名称
+                </a>
+                <a class="btn btn-success" href="/devops/doc/{{ data.id }}/upload/">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    添加文件
+                </a>
+            </div>
+        </div>
+        <div class="bs-example" data-example-id="panel-without-body-with-table"
+             style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+            <div class="panel panel-default"
+                 style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                <!-- Default panel contents -->
+                <div class="panel-heading"
+                     style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                    项目文档列表
+                </div>
+
+                <!-- Table -->
+                <table class="table" style="border-color: rgba(0, 0, 0, 0.35);">
+                    <thead style="border-color: rgba(0, 0, 0, 0.35);">
+                    <tr style="border-color: rgba(0, 0, 0, 0.35);">
+{#                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">ID</th>#}
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">项目名</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">文件名</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">操作</th>
+                        {#                    <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">时间</th>#}
+                        {#                    <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">状态</th>#}
+
+                    </tr>
+                    </thead>
+                    <tbody style="border-color: rgba(0, 0, 0, 0.35);">
+                    {% for obj in doc_list %}
+                        <tr style="border-color: rgba(0, 0, 0, 0.35);">
+{#                            <th scope="row" style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.id }}</th>#}
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.project.project_name }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.project_doc }}</td>
+                            {#                        <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.doc_time|date:"Y-m-d H:i:s" }}</td>#}
+                            {#                        <td style="border-top-color: rgba(0, 0, 0, 0.35);">xxx</td>#}
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">
+{#                                <button type='button' onclick="download('{{ obj.project_doc }}')"> 点击下载#}
+                                    <a class="btn btn-danger" href="/devops/project/list/dowload/?file_name={{ obj.project_doc }}">下载
+                                </a>
+
+{#                                <script>#}
+{#                                    function download(name) {#}
+{#                                        location.href = "/devops/project/list/dowload/?file_name=" + name	// url路径#}
+{#                                    }#}
+{#                                </script>#}
+                                <a class="btn btn-danger" href="/devops/project/list/delete/{{ obj.id }}&project_id={{ obj.project_id }}">删除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

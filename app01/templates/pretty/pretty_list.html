@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="container; clearfix" style="margin-bottom: 10px">
+                <a class="btn btn-success" href="/pretty/add/">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    新建靓号ModelForm
+                </a>
+
+                <div class="col-lg-6" style="float: right;width: 200px">
+                    <form method="get">
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" name="q" placeholder="Search for..." value="{{ search_data }}">
+                        <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+        </button>
+      </span>
+                    </div>
+                </div>
+                </form>
+            </div>
+    </div>
+
+    <div class="container">
+        <div class="bs-example" data-example-id="panel-without-body-with-table"
+             style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+            <div class="panel panel-default"
+                 style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                <!-- Default panel contents -->
+                <div class="panel-heading"
+                     style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                    靓号列表
+                </div>
+
+                <!-- Table -->
+                <table class="table" style="border-color: rgba(0, 0, 0, 0.35);">
+                    <thead style="border-color: rgba(0, 0, 0, 0.35);">
+                    <tr style="border-color: rgba(0, 0, 0, 0.35);">
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">ID</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">手机号</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">价格</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">级别</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">状态</th>
+
+                    </tr>
+                    </thead>
+                    <tbody style="border-color: rgba(0, 0, 0, 0.35);">
+                    {% for obj in queryset %}
+                        <tr style="border-color: rgba(0, 0, 0, 0.35);">
+                            <th scope="row" style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.id }}</th>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.mobile }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.price }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.get_level_display }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ obj.get_status_display }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">
+                                <a class="btn btn-primary" href="/pretty/{{ obj.id }}/edit/">编辑</a>
+                                <a class="btn btn-danger" href="/pretty/{{ obj.id }}/delete/">删除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    <ul class="pagination">
+        {{ page_string }}
+     </ul>
+    </div>
+
+{% endblock %}

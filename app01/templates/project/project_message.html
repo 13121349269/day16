@@ -1,0 +1,81 @@
+{% extends 'project/project_base.html' %}
+
+{% block project_base %}
+   <div class="container">
+        <div class="container" style="margin-bottom: 10px">
+            <div style="...">
+                <a class="btn btn-success">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    当前项目：{{ data.project.project_name }}
+                </a>
+                <a class="btn btn-success" href="/project_seed_add/">
+                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                    添加子项目
+                </a>
+{#                <a class="btn btn-success" href="/user/model/form/add/">#}
+{#                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>#}
+{#                    新建子项目#}
+{#                </a>#}
+            </div>
+        </div>
+
+        <div class="bs-example" data-example-id="panel-without-body-with-table"
+             style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+            <div class="panel panel-default"
+                 style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                <!-- Default panel contents -->
+                <div class="panel-heading"
+                     style="background-color: rgb(193, 230, 198); border-color: rgba(0, 0, 0, 0.35);">
+                    项目信息
+                </div>
+
+                <!-- Table -->
+                <table class="table" style="border-color: rgba(0, 0, 0, 0.35);" >
+                    <thead style="border-color: rgba(0, 0, 0, 0.35);">
+                    <tr style="border-color: rgba(0, 0, 0, 0.35);" >
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">项目ID</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">项目名称</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">项目编号</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">命名空间</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">文档链接</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">访问链接</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">服务镜像</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">中间件信息</th>
+                        <th style="border-bottom-color: rgba(0, 0, 0, 0.35);">服务器资源</th>
+
+                    </tr>
+                    </thead>
+                    <tbody style="border-color: rgba(0, 0, 0, 0.35);">
+                        <tr style="border-color: rgba(0, 0, 0, 0.35);">
+                            <th scope="row" style="border-top-color: rgba(0, 0, 0, 0.35);">{{ data.id }}</th>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ data.project.project_name }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ data.group_coe }}</td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ data.namespace }}</td>
+{#                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">{{ data. }}</td>#}
+                            <td style="border-top-color: rgba(0, 0, 0, 0.40);">
+                                <a href="/devops/doc/{{ data.id }}/list/">查看 </a>
+                            </td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.40);">
+                                <a href="#">查看 </a>
+                            </td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.40);">
+                                <a href="#">查看 </a>
+                            </td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.40);">
+                                <a href="#">查看 </a>
+                            </td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.40);">
+                                <a href="#">查看 </a>
+                            </td>
+                            <td style="border-top-color: rgba(0, 0, 0, 0.35);">
+                                <a class="btn btn-primary" href="/devops/project/{{ data.id }}/edit/" >编辑</a>
+                                <a class="btn btn-danger" href="/devops/project/{{ data.id }}/delete/">删除</a>
+                            </td>
+                        </tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'project/project_base.html' %}
+
+{% block project_base %}
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">项目文件上传</h3>
+            </div>
+            <div class="panel-body">
+                <form method="POST" enctype="multipart/form-data">
+                    {% for obj in form %}
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label>{{ obj.label }} {{ obj }}</label>
+                        {{ field.errors.0 }}
+{#                        <input type="text" class="form-control" placeholder="中海能源" name="title"/>#}
+                    </div>
+                    {% endfor %}
+{#                <input type="datetime-local">#}
+{#                <input type="date"><input type="time">#}
+{#                    <p>当前时间是：#}
+{#                    <script>#}
+{#                        // 获取当前系统时间#}
+{#                        var now = new Date();#}
+{#                        // 转换为字符串#}
+{#                        var str = now.toLocaleDateString() + ' ' + now.toLocaleTimeString();#}
+{#                        // 输出到页面#}
+{#                        document.write(str);#}
+{#                    </script>#}
+{#                        </p>#}
+
+{#                    <div class="form-group">#}
+{#                        <label for="exampleInputFile">文件上传</label>#}
+{#                        <input type="file" id="exampleInputFile">#}
+{#                    </div>#}
+                    <button type="submit" class="btn btn-primary">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
